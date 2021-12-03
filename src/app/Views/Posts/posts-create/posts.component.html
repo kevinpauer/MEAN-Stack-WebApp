@@ -1,11 +1,29 @@
 <mat-card class="inputCard">
-  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+  <form (submit)="onSavePost(postForm)" #postForm="ngForm">
     <mat-form-field class="maxWidth">
-      <input matInput type="text" name="enteredText" ngModel class="maxWidth" required #title="ngModel" placeholder="Post Title">
+      <input
+        matInput
+        type="text"
+        name="enteredText"
+        [ngModel]="post.title"
+        class="maxWidth"
+        required
+        #title="ngModel"
+        placeholder="Post Title"
+      />
       <mat-error *ngIf="title.invalid">This title is not valid!</mat-error>
     </mat-form-field>
     <mat-form-field class="maxWidth">
-      <textarea matInput rows="4" name="enteredValue" ngModel class="maxWidth" required #content="ngModel" placeholder="Post Content"></textarea>
+      <textarea
+        matInput
+        rows="4"
+        name="enteredValue"
+        [ngModel]="post.content"
+        class="maxWidth"
+        required
+        #content="ngModel"
+        placeholder="Post Content"
+      ></textarea>
       <mat-error *ngIf="content.invalid">This content is not valid!</mat-error>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit">Save Post</button>
